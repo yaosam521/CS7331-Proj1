@@ -3,5 +3,10 @@
 by Sam Yao, Zine Brahmi
 
 ```{r}
+library("tidyverse")
 
+```
+
+```{r}
+library("ggplot2")
 ```
