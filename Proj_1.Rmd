@@ -10,3 +10,21 @@ library("tidyverse")
 ```{r}
 library("ggplot2")
 ```
+
+# COVID-19 Cases in Ohio Counties
+
+![](https://i.kym-cdn.com/entries/icons/original/000/007/490/340x_screen_shot_2010-09-29_at_5.03.03_pm.jpg)
+
+## Retrieving the Data
+
+Data was retrieved on February 10, 2023 for data that was collected on February 02, 2023, or 7 days earlier. The data was retrieved using this link, found on the Project 1 Starter given in class:
+
+<https://console.cloud.google.com/marketplace/details/usafacts-public-data/covid19-us-cases?filter=solution-type:dataset&filter=category:covid19&id=3eaff9c5-fbaf-47bb-a441-89db1e1395ab&project=medical-app-c4671>
+
+Here is the SQL query that was used to retrieve the data, also given in the Project 1 Starter from class:
+
+    SELECT *
+    FROM `bigquery-public-data.covid19_usafacts.summary` covid19
+    JOIN `bigquery-public-data.census_bureau_acs.county_2017_5yr` acs
+    ON covid19.county_fips_code = acs.geo_id
+    WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 7 day)
