@@ -25,6 +25,6 @@ Here is the SQL query that was used to retrieve the data, also given in the Proj
 
     SELECT *
     FROM `bigquery-public-data.covid19_usafacts.summary` covid19
-    JOIN `bigquery-public-data.census_bureau_acs.county_2017_5yr` acs
+    JOIN `bigquery-public-data.census_bureau_acs.county_2020_5yr` acs
     ON covid19.county_fips_code = acs.geo_id
-    WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 7 day)
+    WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 9 day) and state="OH"
