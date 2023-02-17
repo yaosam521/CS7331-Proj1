@@ -23,8 +23,17 @@ Data was retrieved on February 10, 2023 for data that was collected on February 
 
 Here is the SQL query that was used to retrieve the data, also given in the Project 1 Starter from class:
 
-    SELECT *
-    FROM `bigquery-public-data.covid19_usafacts.summary` covid19
-    JOIN `bigquery-public-data.census_bureau_acs.county_2020_5yr` acs
-    ON covid19.county_fips_code = acs.geo_id
-    WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 9 day) and state="OH"
+``` sql
+SELECT *
+FROM `bigquery-public-data.covid19_usafacts.summary` covid19
+JOIN `bigquery-public-data.census_bureau_acs.county_2020_5yr` acs
+ON covid19.county_fips_code = acs.geo_id
+WHERE date = DATE_SUB(CURRENT_DATE(), INTERVAL 9 day) and state="OH"
+```
+
+We may be interested in using this query as well on the same data source to get time series data:
+
+``` sql
+SELECT *
+FROM `bigquery-public-data.covid19_usafacts.summary` covid19 WHERE state = "OH" AND county_name != "Statewide Unallocated"
+```
